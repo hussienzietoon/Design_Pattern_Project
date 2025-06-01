@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.notetaking.controllers.DashboardController"
+           fx:id="rootStackPane">
+           
+    <BorderPane styleClass="dashboard-container"
+                stylesheets="@../styles/styles.css">
+
+        <top>
+            <HBox spacing="10" alignment="CENTER_LEFT" styleClass="top-bar">
+                <padding>
+                    <Insets top="10" right="20" bottom="10" left="20"/>
+                </padding>
+                
+                <Text fx:id="welcomeText" styleClass="welcome-text"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                                
+                <JFXButton text="New Note"
+                          onAction="#handleNewNote"
+                          styleClass="action-button"/>
+                          
+                <JFXButton text="Premium"
+                          onAction="#handlePremium"
+                          styleClass="premium-button"/>
+                          
+                <JFXButton text="Logout"
+                          onAction="#handleLogout"
+                          styleClass="logout-button"/>
+            </HBox>
+        </top>
+
+        <center>
+            <ScrollPane fitToWidth="true" styleClass="note-scroll-pane">
+                <VBox fx:id="notesContainer" spacing="10" styleClass="notes-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                </VBox>
+            </ScrollPane>
+        </center>
+
+    </BorderPane>
+
+    <!-- New Note Dialog -->
+    <JFXDialog fx:id="newNoteDialog" 
+               styleClass="dialog"
+               transitionType="CENTER">
+        <JFXDialogLayout>
+            <heading>
+                <Label text="New Note" styleClass="dialog-title"/>
+            </heading>
+            <body>
+                <VBox spacing="15">
+                    <JFXTextField fx:id="noteTitleField" 
+                                promptText="Title"
+                                styleClass="dialog-input"/>
+                    <JFXTextArea fx:id="noteContentArea" 
+                               promptText="Content"
+                               prefRowCount="3"
+                               styleClass="dialog-input"/>
+                </VBox>
+            </body>
+            <actions>
+                <JFXButton text="Cancel"
+                          onAction="#handleCancelNote"
+                          styleClass="dialog-cancel"/>
+                <JFXButton text="Save"
+                          onAction="#handleSaveNote"
+                          styleClass="dialog-save"/>
+            </actions>
+        </JFXDialogLayout>
+    </JFXDialog>
+</StackPane> 

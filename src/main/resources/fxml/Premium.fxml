@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.notetaking.controllers.PremiumController"
+      spacing="20"
+      alignment="CENTER"
+      styleClass="premium-container"
+      stylesheets="@../styles/styles.css">
+
+    <padding>
+        <Insets top="20" right="40" bottom="20" left="40"/>
+    </padding>
+
+    <Label text="Upgrade to Premium" styleClass="title-label"/>
+
+    <VBox spacing="10" alignment="CENTER">
+        <Label text="Premium Features:" styleClass="feature-label"/>
+        <Label text="✓ Unlimited Notes" styleClass="feature-item"/>
+        <Label text="✓ Rich Text Formatting" styleClass="feature-item"/>
+        <Label text="✓ Cloud Backup" styleClass="feature-item"/>
+        <Label text="✓ Priority Support" styleClass="feature-item"/>
+    </VBox>
+
+    <HBox spacing="20" alignment="CENTER">
+        <JFXButton text="Credit Card"
+                   onAction="#handleCreditCardPayment"
+                   styleClass="payment-button"/>
+        <JFXButton text="PayPal"
+                   onAction="#handlePayPalPayment"
+                   styleClass="payment-button"/>
+    </HBox>
+
+    <JFXButton text="Back to Dashboard"
+               onAction="#handleBack"
+               styleClass="back-button"/>
+
+</VBox> 

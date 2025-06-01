@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.notetaking.controllers.LoginController"
+      spacing="20"
+      alignment="CENTER"
+      styleClass="login-container"
+      stylesheets="@../styles/styles.css">
+
+    <padding>
+        <Insets top="20" right="40" bottom="20" left="40"/>
+    </padding>
+
+    <Label text="Note Taking App" styleClass="title-label"/>
+
+    <JFXTextField fx:id="usernameField" 
+                  promptText="Username"
+                  styleClass="input-field"/>
+
+    <JFXPasswordField fx:id="passwordField"
+                      promptText="Password"
+                      styleClass="input-field"/>
+
+    <JFXButton text="Login"
+               onAction="#handleLogin"
+               styleClass="login-button"/>
+
+    <JFXButton text="Create Account"
+               onAction="#handleCreateAccount"
+               styleClass="create-account-button"/>
+
+    <Label fx:id="errorLabel"
+           styleClass="error-label"
+           visible="false"/>
+
+</VBox> 

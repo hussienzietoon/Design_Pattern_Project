@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.notetaking.controllers.RegistrationController"
+      spacing="20"
+      alignment="CENTER"
+      styleClass="login-container"
+      stylesheets="@../styles/styles.css">
+
+    <padding>
+        <Insets top="20" right="40" bottom="20" left="40"/>
+    </padding>
+
+    <Label text="Create Account" styleClass="title-label"/>
+
+    <JFXTextField fx:id="usernameField" 
+                  promptText="Username"
+                  styleClass="input-field"/>
+
+    <JFXPasswordField fx:id="passwordField"
+                      promptText="Password"
+                      styleClass="input-field"/>
+
+    <JFXPasswordField fx:id="confirmPasswordField"
+                      promptText="Confirm Password"
+                      styleClass="input-field"/>
+
+    <JFXButton text="Register"
+               onAction="#handleRegistration"
+               styleClass="login-button"/>
+
+    <JFXButton text="Back to Login"
+               onAction="#handleBackToLogin"
+               styleClass="create-account-button"/>
+
+    <Label fx:id="errorLabel"
+           styleClass="error-label"
+           visible="false"/>
+
+</VBox> 
