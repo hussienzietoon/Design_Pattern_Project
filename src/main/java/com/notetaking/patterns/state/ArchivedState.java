@@ -19,7 +19,7 @@ public class ArchivedState implements NoteState {
     }
 
     @Override
-    public String getStatusName() {
+    public String getStateName() {
         return "Archived";
     }
 } 

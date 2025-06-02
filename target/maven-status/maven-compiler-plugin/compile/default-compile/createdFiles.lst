@@ -7,6 +7,7 @@ com\notetaking\patterns\state\ArchivedState.class
 com\notetaking\models\Note$NoteBuilder.class
 com\notetaking\patterns\command\NoteCommand.class
 com\notetaking\patterns\builder\Note$NoteBuilder.class
+com\notetaking\controllers\DashboardController$2.class
 com\notetaking\patterns\state\NoteState.class
 com\notetaking\patterns\proxy\NoteProxy.class
 com\notetaking\patterns\prototype\NoteTemplate.class
@@ -22,6 +23,7 @@ com\notetaking\patterns\state\PublishedState.class
 com\notetaking\patterns\strategy\PayPalPayment.class
 com\notetaking\models\Note.class
 com\notetaking\patterns\strategy\ListViewStrategy.class
+com\notetaking\controllers\DashboardController$1.class
 com\notetaking\controllers\RegistrationController.class
 com\notetaking\patterns\singleton\UserSession.class
 com\notetaking\patterns\builder\Note.class

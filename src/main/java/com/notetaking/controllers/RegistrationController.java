@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.event.ActionEvent;
+import java.io.IOException;
 
 public class RegistrationController {
 
@@ -36,13 +37,17 @@ public class RegistrationController {
             // In a real application, this would save to a database
             UserSession.getInstance().setUsername(username);
             try {
-                Parent dashboard = FXMLLoader.load(getClass().getResource("/fxml/Dashboard.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Dashboard.fxml"));
+                Parent dashboard = loader.load();
+                DashboardController controller = loader.getController();
+
                 Scene scene = new Scene(dashboard);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
-            } catch (Exception e) {
-                showError("Error loading dashboard");
+            } catch (IOException e) {
+                e.printStackTrace();
+                showError("Error loading dashboard: " + e.getMessage());
             }
         }
     }
@@ -50,13 +55,17 @@ public class RegistrationController {
     @FXML
     private void handleBackToLogin(ActionEvent event) {
         try {
-            Parent login = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
+            Parent login = loader.load();
+            LoginController controller = loader.getController();
+
             Scene scene = new Scene(login);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {
-            showError("Error loading login page");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showError("Error loading login page: " + e.getMessage());
         }
     }
 
@@ -99,12 +108,6 @@ public class RegistrationController {
 
         if (password.length() > 100) {
             showError("Password must not exceed 100 characters");
-            return false;
-        }
-
-        // Password complexity validation
-        if (!password.matches(".*[A-Z].*")) {
-            showError("Password must contain at least one uppercase letter");
             return false;
         }
 

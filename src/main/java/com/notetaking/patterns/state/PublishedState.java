@@ -19,7 +19,7 @@ public class PublishedState implements NoteState {
     }
 
     @Override
-    public String getStatusName() {
+    public String getStateName() {
         return "Published";
     }
 } 

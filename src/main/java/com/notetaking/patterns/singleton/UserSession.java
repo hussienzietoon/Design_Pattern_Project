@@ -44,4 +44,8 @@ public class UserSession {
         isPremium = false;
         subscriptionType = null;
     }
+
+    public void logout() {
+        clearSession();
+    }
 } 

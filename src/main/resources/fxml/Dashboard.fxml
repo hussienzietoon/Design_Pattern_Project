@@ -75,6 +75,19 @@
                                  promptText="Content"
                                  prefRowCount="3"
                                  styleClass="dialog-input"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Status:" styleClass="status-label"/>
+                        <RadioButton text="Draft"
+                                     fx:id="draftRadio"
+                                     selected="true"
+                                     styleClass="state-radio"/>
+                        <RadioButton text="Published"
+                                     fx:id="publishedRadio"
+                                     styleClass="state-radio"/>
+                        <RadioButton text="Archived"
+                                     fx:id="archivedRadio"
+                                     styleClass="state-radio"/>
+                    </HBox>
                 </VBox>
             </body>
             <actions>

@@ -19,7 +19,7 @@ public class DraftState implements NoteState {
     }
 
     @Override
-    public String getStatusName() {
+    public String getStateName() {
         return "Draft";
     }
 } 

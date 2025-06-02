@@ -25,6 +25,10 @@ public class Note {
         this.state = state;
     }
 
+    public NoteState getState() {
+        return this.state;
+    }
+
     public void draft() {
         state.draft(this);
     }
@@ -38,7 +42,7 @@ public class Note {
     }
 
     public String getStatus() {
-        return state.getStatusName();
+        return state.getStateName();
     }
 
     // Getters

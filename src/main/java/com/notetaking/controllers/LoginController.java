@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.event.ActionEvent;
+import java.io.IOException;
 
 public class LoginController {
 
@@ -31,13 +32,17 @@ public class LoginController {
         if (validateLogin(username, password)) {
             UserSession.getInstance().setUsername(username);
             try {
-                Parent dashboard = FXMLLoader.load(getClass().getResource("/fxml/Dashboard.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Dashboard.fxml"));
+                Parent dashboard = loader.load();
+                DashboardController controller = loader.getController();
+
                 Scene scene = new Scene(dashboard);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
-            } catch (Exception e) {
-                showError("Error loading dashboard");
+            } catch (IOException e) {
+                e.printStackTrace();
+                showError("Error loading dashboard: " + e.getMessage());
             }
         } else {
             showError("Invalid username or password");
@@ -47,13 +52,17 @@ public class LoginController {
     @FXML
     private void handleCreateAccount(ActionEvent event) {
         try {
-            Parent registration = FXMLLoader.load(getClass().getResource("/fxml/Registration.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Registration.fxml"));
+            Parent registration = loader.load();
+            RegistrationController controller = loader.getController();
+
             Scene scene = new Scene(registration);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {
-            showError("Error loading registration page");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showError("Error loading registration page: " + e.getMessage());
         }
     }
 
