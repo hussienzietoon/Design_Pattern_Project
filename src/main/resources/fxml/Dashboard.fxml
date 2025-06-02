@@ -10,7 +10,7 @@
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="com.notetaking.controllers.DashboardController"
            fx:id="rootStackPane">
-           
+
     <BorderPane styleClass="dashboard-container"
                 stylesheets="@../styles/styles.css">
 
@@ -19,21 +19,30 @@
                 <padding>
                     <Insets top="10" right="20" bottom="10" left="20"/>
                 </padding>
-                
+
                 <Text fx:id="welcomeText" styleClass="welcome-text"/>
                 <Region HBox.hgrow="ALWAYS"/>
-                                
+
                 <JFXButton text="New Note"
-                          onAction="#handleNewNote"
-                          styleClass="action-button"/>
-                          
-                <JFXButton text="Premium"
-                          onAction="#handlePremium"
-                          styleClass="premium-button"/>
-                          
+                           onAction="#handleNewNote"
+                           styleClass="action-button"/>
+
+                <StackPane>
+                    <JFXButton fx:id="premiumButton"
+                               text="Premium"
+                               onAction="#handlePremium"
+                               styleClass="premium-button"/>
+
+                    <JFXButton fx:id="unsubscribeButton"
+                               text="Unsubscribe"
+                               onAction="#handleUnsubscribe"
+                               styleClass="unsubscribe-button"
+                               visible="false"/>
+                </StackPane>
+
                 <JFXButton text="Logout"
-                          onAction="#handleLogout"
-                          styleClass="logout-button"/>
+                           onAction="#handleLogout"
+                           styleClass="logout-button"/>
             </HBox>
         </top>
 
@@ -50,7 +59,7 @@
     </BorderPane>
 
     <!-- New Note Dialog -->
-    <JFXDialog fx:id="newNoteDialog" 
+    <JFXDialog fx:id="newNoteDialog"
                styleClass="dialog"
                transitionType="CENTER">
         <JFXDialogLayout>
@@ -59,22 +68,22 @@
             </heading>
             <body>
                 <VBox spacing="15">
-                    <JFXTextField fx:id="noteTitleField" 
-                                promptText="Title"
-                                styleClass="dialog-input"/>
-                    <JFXTextArea fx:id="noteContentArea" 
-                               promptText="Content"
-                               prefRowCount="3"
-                               styleClass="dialog-input"/>
+                    <JFXTextField fx:id="noteTitleField"
+                                  promptText="Title"
+                                  styleClass="dialog-input"/>
+                    <JFXTextArea fx:id="noteContentArea"
+                                 promptText="Content"
+                                 prefRowCount="3"
+                                 styleClass="dialog-input"/>
                 </VBox>
             </body>
             <actions>
                 <JFXButton text="Cancel"
-                          onAction="#handleCancelNote"
-                          styleClass="dialog-cancel"/>
+                           onAction="#handleCancelNote"
+                           styleClass="dialog-cancel"/>
                 <JFXButton text="Save"
-                          onAction="#handleSaveNote"
-                          styleClass="dialog-save"/>
+                           onAction="#handleSaveNote"
+                           styleClass="dialog-save"/>
             </actions>
         </JFXDialogLayout>
     </JFXDialog>

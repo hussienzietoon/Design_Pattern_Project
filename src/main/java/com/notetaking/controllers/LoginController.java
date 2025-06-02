@@ -58,13 +58,47 @@ public class LoginController {
     }
 
     private boolean validateLogin(String username, String password) {
-        // For demonstration purposes - in a real app, this would validate against a database
-        return username != null && !username.trim().isEmpty() &&
-               password != null && !password.trim().isEmpty();
+        // Clear any previous error messages
+        errorLabel.setVisible(false);
+
+        // Username validation
+        if (username == null || username.trim().isEmpty()) {
+            showError("Username is required");
+            return false;
+        }
+
+        if (username.length() < 3) {
+            showError("Username must be at least 3 characters long");
+            return false;
+        }
+
+        if (username.length() > 50) {
+            showError("Username must not exceed 50 characters");
+            return false;
+        }
+
+        // Password validation
+        if (password == null || password.trim().isEmpty()) {
+            showError("Password is required");
+            return false;
+        }
+
+        if (password.length() < 6) {
+            showError("Password must be at least 6 characters long");
+            return false;
+        }
+
+        if (password.length() > 100) {
+            showError("Password must not exceed 100 characters");
+            return false;
+        }
+
+        // If all validations pass
+        return true;
     }
 
     private void showError(String message) {
         errorLabel.setText(message);
         errorLabel.setVisible(true);
     }
-} 
+}

@@ -67,6 +67,18 @@
   -fx-background-radius: 4;
 }
 
+.unsubscribe-button {
+  -fx-background-color: #ff9800;
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-padding: 8 16;
+  -fx-background-radius: 4;
+}
+
+.unsubscribe-button:hover {
+  -fx-background-color: #f57c00;
+}
+
 .logout-button {
   -fx-background-color: #f44336;
   -fx-text-fill: white;

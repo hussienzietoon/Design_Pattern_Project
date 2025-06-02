@@ -61,13 +61,65 @@ public class RegistrationController {
     }
 
     private boolean validateRegistration(String username, String password, String confirmPassword) {
+        // Clear any previous error messages
+        errorLabel.setVisible(false);
+
+        // Username validation
         if (username == null || username.trim().isEmpty()) {
             showError("Username is required");
             return false;
         }
 
+        if (username.length() < 3) {
+            showError("Username must be at least 3 characters long");
+            return false;
+        }
+
+        if (username.length() > 50) {
+            showError("Username must not exceed 50 characters");
+            return false;
+        }
+
+        // Username format validation (alphanumeric and underscore only)
+        if (!username.matches("^[a-zA-Z0-9_]+$")) {
+            showError("Username can only contain letters, numbers, and underscores");
+            return false;
+        }
+
+        // Password validation
         if (password == null || password.trim().isEmpty()) {
             showError("Password is required");
+            return false;
+        }
+
+        if (password.length() < 6) {
+            showError("Password must be at least 8 characters long");
+            return false;
+        }
+
+        if (password.length() > 100) {
+            showError("Password must not exceed 100 characters");
+            return false;
+        }
+
+        // Password complexity validation
+        if (!password.matches(".*[A-Z].*")) {
+            showError("Password must contain at least one uppercase letter");
+            return false;
+        }
+
+
+
+        if (!password.matches(".*\\d.*")) {
+            showError("Password must contain at least one number");
+            return false;
+        }
+
+
+
+        // Confirm password validation
+        if (confirmPassword == null || confirmPassword.trim().isEmpty()) {
+            showError("Please confirm your password");
             return false;
         }
 
@@ -76,6 +128,7 @@ public class RegistrationController {
             return false;
         }
 
+        // If all validations pass
         return true;
     }
 
@@ -83,4 +136,4 @@ public class RegistrationController {
         errorLabel.setText(message);
         errorLabel.setVisible(true);
     }
-} 
+}
